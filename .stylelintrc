@@ -1,0 +1,19 @@
+{
+  "syntax": "sass",
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "block-closing-brace-newline-before": null,
+    "block-opening-brace-space-before": null,
+    "declaration-block-trailing-semicolon": null,
+    "declaration-empty-line-before": "never",
+    "rule-empty-line-before": null,
+    "selector-list-comma-newline-after": "always-multi-line",
+    "no-eol-whitespace": null,
+    "no-missing-end-of-source-newline": null,
+    "max-nesting-depth": 3,
+    "string-quotes": "double",
+    "function-url-quotes": "always",
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true
+  }
+}
