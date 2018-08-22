@@ -13,6 +13,7 @@ class Card extends Component {
       servings: PropTypes.string,
       gift: PropTypes.string,
       weight: PropTypes.number,
+      unit: PropTypes.string,
       footer_default: PropTypes.string,
       footer_selected: PropTypes.string,
       footer_disabled: PropTypes.string,
@@ -79,11 +80,22 @@ class Card extends Component {
       <li className="card-wrapper">
         <div
           className={`card card--${cardState} ${hover ? "card--hoverOff" : ""}`}
-          style={{backgroundImage: `url(${entities.img})`}}
           onClick={(evt) => this.onClickCard(cardState, evt)}
           onMouseLeave={this.toggleHover}
         >
+          <div className="card__decor" />
           <span className="card__header">{entities.header}</span>
+          <span className="card__caption">{entities.caption}</span>
+          <span className="card__description">{entities.description}</span>
+          <span className="card__servings">{entities.servings}</span>
+          <span className="card__gift">{entities.gift}</span>
+          <div className="card__circle">
+            <span className="card__weight">{entities.weight}</span>
+            <span className="card__unit">{entities.unit}</span>
+          </div>
+          <div className="img-wrapper">
+            <img src={entities.img} alt="cat" />
+          </div>
         </div>
         {this.getFooter(cardState, entities)}
       </li>

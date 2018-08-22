@@ -13,6 +13,7 @@ const cards = [
     servings: "10 порций",
     gift: "мышь в подарок",
     weight: 0.5,
+    unit: "кг",
     footer_default: "Чего сидишь? Порадуй котэ,",
     footer_selected: "Печень утки разварная с артишоками.",
     footer_disabled: "Чего сидишь? Порадуй котэ,",
