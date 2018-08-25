@@ -1,48 +1,233 @@
-@import '../../sass/media'
 @import '../../sass/vars'
 
 .card-wrapper
   display: block
-  width: 320px
+  width: 315px
+  padding: 0
+  margin: 0 84px 50px 0
+  &:last-child
+    margin-right: 0
+  @media (max-width: 1133px)
+    &:last-child
+      margin: 0 84px
+    &:nth-child(2)
+      margin-right: 0
+  @media (max-width: 734px)
+    &:first-child
+      margin: 0 25px 30px
+    &:last-child
+      margin: 0 25px
+    &:nth-child(2)
+      margin: 0 25px 30px
 
 .card
   position: relative
   width: 100%
-  height: 480px
-  padding: 20px 11px 11px 40px
-  border-right: 4px solid $primary
-  border-bottom: 4px solid $primary
+  height: 476px
+  padding: 20px 11px 11px 43px
+  border-right: 4px solid
+  border-bottom: 4px solid
   border-radius: 10px
-  background: linear-gradient(135deg, transparent 23px, $background 0) no-repeat bottom left
+  background: linear-gradient(135deg, transparent 26px, $background 0) no-repeat bottom left
+  cursor: pointer
+  transition: $base-transition
   &::after, &::before
     content: ""
     position: absolute
-  &::after
-    top: -4px
-    right: -4px
-    border-top: 4px solid $primary
-    border-right: 4px solid $primary
-    border-top-right-radius: 10px
-    width: 286px
-    height: 20px
+    transition: $base-transition
   &::before
     left: -4px
     bottom: -4px
-    border-left: 4px solid $primary
-    border-bottom: 4px solid $primary
+    border-left: 4px solid
+    border-bottom: 4px solid
     border-bottom-left-radius: 10px
     width: 20px
-    height: 446px
+    height: 436px
+  &::after
+    top: -4px
+    right: -4px
+    border-top: 4px solid
+    border-right: 4px solid
+    border-top-right-radius: 10px
+    width: 276px
+    height: 20px
+    @media (max-width: 320px)
+      width: 228px
   & .card__decor
+    transition: $base-transition
     position: absolute
-    left: -10px
-    top: 14px
-    width: 53px
+    left: -12px
+    top: 17px
+    width: 61px
     height: 4px
-    background: #1698d9
     transform: rotate(-45deg)
+  & .card__header
+    display: block
+    color: $text-secondary
+    font-size: 16px
+    line-height: 1
+    margin-bottom: 10px
+  & .card__caption
+    display: block
+    color: $text-base
+    font-weight: bold
+    font-size: 46px
+    line-height: 1
+    letter-spacing: 1px
+    margin: 0 0 6px 0
+    @media (max-width: 400px)
+      font-size: 40px
+  & .card__description
+    display: block
+    color: $text-base
+    font-weight: bold
+    font-size: 24px
+    line-height: 1
+    margin: 0 0 17px 0
+  & .card__servings
+    display: block
+    color: $text-secondary
+    font-size: 14px
+    line-height: 16px
+    & span
+      font-weight: bold
+  & .card__gift
+    display: block
+    color: $text-secondary
+    font-size: 14px
+    line-height: 16px
+    & span
+      font-weight: bold
+  & .card__super_good
+    display: block
+    color: $text-secondary
+    font-size: 14px
+    line-height: 16px
+  & .card__img
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 252px
+    height: 267px
+    overflow: hidden
+    border-bottom-left-radius: 6px
+    & img
+      width: 100%
+      height: auto
 
-.img-wrapper
+.card.card--default
+  border-color: $primary
+  & .card__decor
+    background-color: $primary
+  & .circle
+    background-color: $primary
+  &::before, &::after
+    border-color: $primary
+  &:hover, &:focus
+    border-color: $primary-hover
+    &::before, &::after
+      border-color: $primary-hover
+    & .card__decor
+      background-color: $primary-hover
+    & .circle
+      background-color: $primary-hover
+  &.card--hoverOff
+    &:hover, &:focus
+      border-color: $primary
+      &::before, &::after
+        border-color: $primary
+      & .card__decor
+        background-color: $primary
+      & .circle
+        background-color: $primary
+
+.card.card--selected
+  border-color: $accent
+  & .card__decor
+    background-color: $accent
+  & .circle
+    background-color: $accent
+  &::before, &::after
+    border-color: $accent
+  &:hover, &:focus
+    border-color: $accent-hover
+    &::before, &::after
+      border-color: $accent-hover
+    & .card__decor
+      background-color: $accent-hover
+    & .circle
+      background-color: $accent-hover
+  &.card--hoverOff
+    &:hover, &:focus
+      border-color: $accent
+      &::before, &::after
+        border-color: $accent
+      & .card__decor
+        background-color: $accent
+      & .circle
+        background-color: $accent
+
+.card.card--disabled
+  border-color: $secondary
+  cursor: default
+  & .card__decor
+    background-color: $secondary
+  & .circle
+    background-color: $secondary
+  &::before, &::after
+    border-color: $secondary
+  & .card__caption, & .card__description
+    color: $secondary
+  + .footer-text
+    color: $warning
+
+.circle
+  width: 81px
+  height: 81px
   position: absolute
-  bottom: 0
+  right: 11px
+  bottom: 11px
+  text-align: center
+  border-radius: 100%
+  z-index: 3
+  transition: $base-transition
+  & .circle__weight
+    display: block
+    margin-bottom: 8px
+    margin-top: 21px
+    color: $white
+    font-size: 42px
+    line-height: 22px
+  & .circle__unit
+    display: block
+    color: $white
+    font-size: 21px
+    line-height: 22px
+
+.footer-text
+  text-align: center
+  display: block
+  color: $text-secondary-light
+  font-size: 13px
+  line-height: 16px
+  margin-top: 14px
+  & .footer-text__button
+    color: $primary
+    border-bottom: 1px dashed $primary
+    margin-left: 2px
+    cursor: pointer
+  & .footer-text__dot
+    color: $primary
+  @media (max-width: 734px)
+    margin-top: 5px
+
+.overlay
+  position: absolute
+  width: 100%
+  height: 100%
   left: 0
+  top: 0
+  border-radius: 10px
+  background: linear-gradient(135deg, transparent 30px, $background 0) no-repeat bottom left
+  z-index: 2
+  opacity: 0.5

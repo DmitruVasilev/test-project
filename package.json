@@ -6,10 +6,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "lint-js": "eslint ./src --color --format stylish",
-    "lint-js-fix": "eslint ./src --color --format stylish --fix",
     "format": "prettier --config .prettierrc --write 'src/**/*.{js,jsx}'",
     "stylelint": "stylelint src/**/*.sass --syntax sass --color --formatter verbose",
-    "stylelint-fix": "stylelint src/**/*.sass --syntax sass --color --formatter verbose --fix",
     "precommit": "lint-staged",
     "test": "node scripts/test.js --env=jsdom"
   },

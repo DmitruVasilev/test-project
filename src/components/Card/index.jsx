@@ -11,13 +11,15 @@ class Card extends Component {
       caption: PropTypes.string,
       description: PropTypes.string,
       servings: PropTypes.string,
+      number_of_servings: PropTypes.string,
       gift: PropTypes.string,
-      weight: PropTypes.number,
+      number_of_gift: PropTypes.string,
+      super_good: PropTypes.string,
+      weight: PropTypes.string,
       unit: PropTypes.string,
       footer_default: PropTypes.string,
       footer_selected: PropTypes.string,
       footer_disabled: PropTypes.string,
-      link: PropTypes.string,
       img: PropTypes.string,
     }),
   };
@@ -52,16 +54,17 @@ class Card extends Component {
     const isHover = false;
     switch (state) {
       case "selected":
-        return <span className="card__footer">{entities.footer_selected}</span>;
+        return <span className="footer-text">{entities.footer_selected}</span>;
       case "disabled":
-        return <span className="card__footer">{entities.footer_disabled}</span>;
+        return <span className="footer-text">{entities.footer_disabled}</span>;
       default:
         return (
-          <span className="card__footer">
+          <span className="footer-text">
             {entities.footer_default}
-            <span className="card__link" onClick={(evt) => this.onClickCard(state, evt, isHover)}>
-              {entities.link_text}
+            <span className="footer-text__button" onClick={(evt) => this.onClickCard(state, evt, isHover)}>
+              купи
             </span>
+            <span className="footer-text__dot">.</span>
           </span>
         );
     }
@@ -85,17 +88,25 @@ class Card extends Component {
         >
           <div className="card__decor" />
           <span className="card__header">{entities.header}</span>
-          <span className="card__caption">{entities.caption}</span>
+          <h3 className="card__caption">{entities.caption}</h3>
           <span className="card__description">{entities.description}</span>
-          <span className="card__servings">{entities.servings}</span>
-          <span className="card__gift">{entities.gift}</span>
-          <div className="card__circle">
-            <span className="card__weight">{entities.weight}</span>
-            <span className="card__unit">{entities.unit}</span>
+          <span className="card__servings">
+            <span>{entities.number_of_servings} </span>
+            {entities.servings}
+          </span>
+          <span className="card__gift">
+            {entities.number_of_gift && <span>{entities.number_of_gift} </span>}
+            {entities.gift}
+          </span>
+          <span className="card__super_good">{entities.super_good}</span>
+          <div className="circle">
+            <span className="circle__weight">{entities.weight}</span>
+            <span className="circle__unit">{entities.unit}</span>
           </div>
-          <div className="img-wrapper">
+          <div className="card__img">
             <img src={entities.img} alt="cat" />
           </div>
+          {cardState === "disabled" ? <div className="overlay" /> : ""}
         </div>
         {this.getFooter(cardState, entities)}
       </li>
